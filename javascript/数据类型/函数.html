@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<p id="p1">点我啊</p>
+<p id="p2">再点我啊</p>
+
+
+<script>
+
+    /**
+     * 一般函数
+     */
+
+    function add(a, b) {
+        return a + b;
+    }
+
+    let c = add(1, 2)
+    console.log(c)
+
+    /**
+     * 匿名函数
+     */
+
+    let d = (function (a, b) {
+        return a * b;
+    })(2, 3)
+    console.log(d)
+
+    document.getElementById("p1").onclick = (function () {
+        alert("不要点我啊")
+    })
+
+
+    /**
+     * 箭头函数
+     */
+
+    document.getElementById("p2").onclick = () => alert("你再点我试试a")
+
+
+
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
