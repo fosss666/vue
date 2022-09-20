@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    let arr = [1, 2, 3, 4];
+    console.log(arr)
+    console.log(arr.length)
+
+    //在尾部添加元素
+    arr.push(5)
+    console.log(arr)
+
+    //从头部删除元素
+    arr.shift()
+    console.log(arr)
+
+    //指定位置删除元素
+    arr.splice(0, 2)
+    console.log(arr)
+
+    //将数组转化为字符串
+    console.log(arr.join('-'))
+
+    //将数组中的每个元素乘十
+    //方式一
+    /*function a(i){
+        return i*10;
+    }
+    console.log(arr.map(a))*/
+
+    //方式二
+    console.log(arr.map(i => i * 10))
+
+    //过滤掉偶数
+    console.log(arr.filter(i=>i%2==1))
+
+    //遍历
+    arr.forEach(i=>console.log(i))
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
