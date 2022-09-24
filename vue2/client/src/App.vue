@@ -30,6 +30,12 @@
       篮球<input type="checkbox" value="篮球" v-model="hobbies"><br/>
       你选中了{{hobbies}}
     </div>
+    <hr/>
+    <div>
+      <h1>{{sum}}</h1>
+      <h1>{{sum}}</h1>
+      <h1>{{sum}}</h1>
+    </div>
   </div>
 
 </template>
@@ -55,6 +61,12 @@ export default{
     },
     jian(){
       this.number--
+    }
+  },
+  computed:{
+    sum(){
+      console.log("计算属性有缓存，只执行一次")
+      return this.name+this.sex
     }
   }
 }
