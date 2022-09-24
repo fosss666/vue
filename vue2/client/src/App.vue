@@ -10,9 +10,27 @@
       <input type="button" value="-" @click="jian()">
       {{number}}
     </div>
+    <hr/>
+
+    <div>
+      <input type="text" v-model="name">
+      {{name}}
+    </div>
+    <hr/>
+    <div>
+      男<input type="radio" v-model="sex" value="男">
+      女<input type="radio" v-model="sex" value="女"><br/>
+      你选中了{{sex}}
+    </div>
+
+    <div>
+      爱好
+      游泳<input type="checkbox" value="游泳" v-model="hobbies">
+      健身<input type="checkbox" value="健身" v-model="hobbies">
+      篮球<input type="checkbox" value="篮球" v-model="hobbies"><br/>
+      你选中了{{hobbies}}
+    </div>
   </div>
-
-
 
 </template>
 
@@ -23,7 +41,9 @@ export default{
       msg:"嘞好啊",
       name:"张三",
       birthday:'1999-12-12',
-      number:0
+      number:0,
+      sex:'男',
+      hobbies:[]
     }
   },
   methods:{
