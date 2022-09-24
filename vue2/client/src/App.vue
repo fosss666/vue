@@ -36,11 +36,16 @@
       <h1>{{sum}}</h1>
       <h1>{{sum}}</h1>
     </div>
-  </div>
 
+    <hr>
+    <div><input type="button" value="查询数据" @click="selectAll"></div>
+
+  </div>
 </template>
 
 <script>
+import axios from 'axios'
+
 export default{
   data(){
     return {
@@ -61,6 +66,11 @@ export default{
     },
     jian(){
       this.number--
+    },
+    selectAll(){
+      axios.get("/api/students").then(res=>{
+        console.log(res.data.data)
+      })
     }
   },
   computed:{
