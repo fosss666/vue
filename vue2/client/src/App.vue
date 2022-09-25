@@ -1,7 +1,7 @@
 <template>
   <div>
 
-
+    <div><input type="button" value="查询数据" @click="selectAll"></div>
     <div>
       <div class="title">学生列表</div>
       <div class="thead">
@@ -65,7 +65,7 @@
     </div>
 
     <hr>
-    <div><input type="button" value="查询数据" @click="selectAll"></div><br/><br>
+
 
   </div>
 </template>
@@ -84,6 +84,9 @@ export default{
       hobbies:[],
       students:[]
     }
+  },
+  created() {
+    this.selectAll()
   },
   methods:{
     f1(){
