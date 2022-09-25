@@ -14,8 +14,13 @@
       </div>
     </div>
     <div class="tbody">
-      <div class="row" v-if="students.length>0">
-        显示学生数据
+      <div v-if="students.length>0">
+        <div class="row" v-for="student of students" :key="student.id">
+          <div class="col">{{ student.id }}</div>
+          <div class="col">{{ student.name }}</div>
+          <div class="col">{{ student.sex }}</div>
+          <div class="col">{{student.age}}</div>
+        </div>
       </div>
       <div class="row" v-else >暂无学生数据</div>
     </div>
