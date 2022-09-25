@@ -2,8 +2,22 @@
   <div>
     <h1>el</h1>
     <el-button>我是按钮</el-button>
+    <hr/>
 
     <template>
+      <el-input size="mini" placeholder="请输入姓名" v-model="queryDto.name"></el-input>
+      <el-select v-model="queryDto.sex" placeholder="请选择性别" clearable>
+        <el-option value="男"></el-option>
+        <el-option value="女"></el-option>
+      </el-select>
+      <el-select v-model="queryDto.age" placeholder="请选择年龄范围" clearable>
+        <el-option value="0,20" label="0到20岁"></el-option>
+        <el-option value="20,40" label="20到40岁"></el-option>
+        <el-option value="40,60" label="40到60岁"></el-option>
+        <el-option value="60,80" label="60到80岁"></el-option>
+      </el-select>
+      <el-button @click="getPage" type="primary">查询</el-button>
+
       <el-table
           :data="students"
           stripe
@@ -54,7 +68,10 @@ export default {
       students: [],
       queryDto: {
         page: 1,
-        size: 3
+        size: 3,
+        name:'',
+        sex:'',
+        age:null
       },
       total: 0
     }
@@ -79,15 +96,21 @@ export default {
     handleSizeChange(val) {
       console.log(`每页 ${val} 条`);
       this.queryDto.size = val
+
     },
     handleCurrentChange(val) {
       console.log(`当前页: ${val}`);
       this.queryDto.page = val
+      this.getPage()
     }
   }
 }
 </script>
 
 <style scoped>
-
+.el-input--mini,
+.el-select--mini {
+  width: 193px;
+  margin: 10px 10px 0 0;
+}
 </style>
