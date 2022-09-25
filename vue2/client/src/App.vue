@@ -1,5 +1,27 @@
 <template>
   <div>
+
+
+    <div>
+      <div class="title">学生列表</div>
+      <div class="thead">
+        <div class="row bold">
+          <div class="col">编号</div>
+          <div class="col">姓名</div>
+          <div class="col">性别</div>
+          <div class="col">年龄</div>
+        </div>
+      </div>
+    </div>
+    <div class="tbody">
+      <div class="row" v-if="students.length>0">
+        显示学生数据
+      </div>
+      <div class="row" v-else >暂无学生数据</div>
+    </div>
+
+    <hr/><br><br>
+
     <h1>{{msg}}</h1>
     <div><input type="text" :value="name">简化写法</div>
     <div><input type="date" v-bind:value="birthday"></div>
@@ -38,7 +60,7 @@
     </div>
 
     <hr>
-    <div><input type="button" value="查询数据" @click="selectAll"></div>
+    <div><input type="button" value="查询数据" @click="selectAll"></div><br/><br>
 
   </div>
 </template>
@@ -54,7 +76,8 @@ export default{
       birthday:'1999-12-12',
       number:0,
       sex:'男',
-      hobbies:[]
+      hobbies:[],
+      students:[]
     }
   },
   methods:{
@@ -70,6 +93,7 @@ export default{
     selectAll(){
       axios.get("/api/students").then(res=>{
         console.log(res.data.data)
+        this.students=res.data.data
       })
     }
   },
@@ -82,7 +106,38 @@ export default{
 }
 </script>
 
+<style>
+html,
+body {
+  font-family: 华文行楷;
+  font-size: 20px;
+}
 
+.title {
+  margin-bottom: 10px;
+  font-size: 30px;
+  color: #333;
+  text-align: center;
+}
+
+.row {
+  background-color: #fff;
+  display: flex;
+  justify-content: center;
+}
+
+.col {
+  border: 1px solid #f0f0f0;
+  width: 15%;
+  height: 35px;
+  text-align: center;
+  line-height: 35px;
+}
+
+.bold .col {
+  background-color: #f1f1f1;
+}
+</style>
 
 
 
