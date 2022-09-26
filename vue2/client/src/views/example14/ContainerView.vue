@@ -1,10 +1,33 @@
 <template>
     <div class="container">
-      <router-view></router-view>
+<!--      <router-view></router-view>-->
+      <el-container>
+        <el-aside width="200px">
+          <router-link to="/c1/p1">P1</router-link>
+          <router-link to="/c1/p2">P2</router-link>
+          <router-link to="/c1/p3">P3</router-link>
+        </el-aside>
+        <el-container>
+          <el-header>
+            <el-button type="primary" icon="el-icon-edit" circle @click="jump('/c1/p1')"></el-button>
+            <el-button type="success" icon="el-icon-check" circle @click="jump('/c1/p2')"></el-button>
+            <el-button type="warning" icon="el-icon-star-off" circle @click="jump('/c1/p3')"></el-button>
+          </el-header>
+          <el-main>
+            <router-view></router-view>
+          </el-main>
+        </el-container>
+      </el-container>
     </div>
 </template>
 <script>
-
+export default{
+  methods:{
+    jump(url){
+      this.$router.push(url)
+    }
+  }
+}
 </script>
 <style scoped>
 .container {
