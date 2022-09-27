@@ -24,6 +24,7 @@ const options = {
         // sessionStorage   以标签页为单位，关闭标签页时，数据被清除
         sessionStorage.setItem('serverRoutes',JSON.stringify(array))
         addServerRoutes(array)
+        this.$router.push("/")//直接跳转到主页面
       })
     }
   }
