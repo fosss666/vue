@@ -6,7 +6,7 @@
 </template>
 <script>
 import axios from 'axios'
-import {resetRouter} from "@/router/example15";
+import {resetRouter,addServerRoutes} from "@/router/example15";
 
 const options = {
   data() {
@@ -20,16 +20,10 @@ const options = {
       axios.get(`/api/menu/${this.username}`).then(res => {
         console.log(res.data.data)
         const array = res.data.data;
-        for (const {id, path, component} of array) {
-          console.log(id,path,component)
-          if (component != null) {
-            this.$router.addRoute('c', {
-              path: path,
-              name: id,
-              component: () => import(`@/views/example15/container/${component}`)
-            })
-          }
-        }
+        // localStorage     即使浏览器关闭，存储的数据仍在
+        // sessionStorage   以标签页为单位，关闭标签页时，数据被清除
+        sessionStorage.setItem('serverRoutes',JSON.stringify(array))
+        addServerRoutes(array)
       })
     }
   }
