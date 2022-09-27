@@ -3,9 +3,34 @@
 <!--      <router-view></router-view>-->
       <el-container>
         <el-aside width="200px">
-          <router-link to="/c1/p1">P1</router-link>
+<!--          <router-link to="/c1/p1">P1</router-link>
           <router-link to="/c1/p2">P2</router-link>
-          <router-link to="/c1/p3">P3</router-link>
+          <router-link to="/c1/p3">P3</router-link>-->
+          <el-menu
+              router
+              class="el-menu-vertical-demo"
+              background-color="#545c64"
+              text-color="#fff"
+              active-text-color="#ffd04b">
+            <el-submenu>
+              <template slot="title">
+                <i class="el-icon-location"></i>
+                <span>菜单一</span>
+              </template>
+                <el-menu-item index="/c1/p1">选项1</el-menu-item>
+                <el-menu-item index="/c1/p2">选项2</el-menu-item>
+                <el-menu-item index="/c1/p3">选项3</el-menu-item>
+            </el-submenu>
+            <el-menu-item>
+              <i class="el-icon-menu"></i>
+              <span slot="title">菜单二</span>
+            </el-menu-item>
+            <el-menu-item>
+              <i class="el-icon-document"></i>
+              <span slot="title">菜单三</span>
+            </el-menu-item>
+          </el-menu>
+
         </el-aside>
         <el-container>
           <el-header>
