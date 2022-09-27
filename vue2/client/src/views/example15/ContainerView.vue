@@ -35,7 +35,7 @@
 <script>
 const options = {
     mounted() {
-        const serverRoutes = sessionStorage.getItem('serverRoutes');
+        /*const serverRoutes = sessionStorage.getItem('serverRoutes');
         const array = JSON.parse(serverRoutes);
         // console.log(array);
 
@@ -54,7 +54,7 @@ const options = {
             }
         }
         // console.log(top);
-        this.top = top;
+        this.top = top;*/
     },
     data() {
         return {
