@@ -2,6 +2,7 @@
   <div class="container">
     <el-container>
       <el-header>
+        {{$store.state.name}},欢迎您！
       </el-header>
       <el-container>
         <el-aside width="200px">

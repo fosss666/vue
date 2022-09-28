@@ -1,6 +1,23 @@
 <template>
-  <div class="p"></div>
+  <div class="p">
+    <el-input placeholder="请修改用户姓名" size="mini" v-model="name"></el-input>
+    <el-button type="primary" size="mini" @click="updateName()">修改</el-button>
+  </div>
 </template>
+<script>
+export default{
+  data(){
+    return {
+      name:''
+    }
+  },
+  methods:{
+    updateName(){
+      this.$store.commit('updateName',this.name)
+    }
+  }
+}
+</script>
 <style scoped>
 .p {
   background-color: yellowgreen;
