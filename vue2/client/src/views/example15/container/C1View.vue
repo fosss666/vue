@@ -1,10 +1,11 @@
 <template>
   <div class="p">
     <el-input placeholder="请修改用户姓名" size="mini" v-model="name"></el-input>
-    <el-button type="primary" size="mini" @click="updateName()">修改</el-button>
+    <el-button type="primary" size="mini" @click="updateName(name)">修改</el-button>
   </div>
 </template>
 <script>
+import {mapMutations} from 'vuex'
 export default{
   data(){
     return {
@@ -12,9 +13,10 @@ export default{
     }
   },
   methods:{
-    updateName(){
-      this.$store.commit('updateName',this.name)
-    }
+    // updateName(){
+    //   this.$store.commit('updateName',this.name)
+    // }
+    ...mapMutations(['updateName'])
   }
 }
 </script>

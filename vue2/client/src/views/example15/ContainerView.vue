@@ -2,7 +2,8 @@
   <div class="container">
     <el-container>
       <el-header>
-        {{$store.state.name}},欢迎您！
+<!--        {{$store.state.name}},欢迎您！-->
+        {{name}},欢迎您！
       </el-header>
       <el-container>
         <el-aside width="200px">
@@ -38,6 +39,7 @@
   </div>
 </template>
 <script>
+import {mapState} from 'vuex'
 const options = {
   mounted() {
     const serverRoutes = sessionStorage.getItem("serverRoutes")
@@ -70,6 +72,17 @@ const options = {
     return {
       top: []
     }
+  },
+  //计算属性
+  /*computed:{
+    name(){
+      return this.$store.state.name
+    }
+  }*/
+
+  // computed:mapState(['name'])
+  computed:{
+    ...mapState(['name'])
   }
 }
 export default options;
