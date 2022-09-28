@@ -27,7 +27,7 @@ const router = new VueRouter({
   routes
 })
 
-// 从 sessionStorage 中恢复路由数据
+// 从 sessionStorage 中恢复路由数据,是刷新页面后登录信息不会消失
 const serverRoutes = sessionStorage.getItem('serverRoutes');
 if(serverRoutes) {
   const array = JSON.parse(serverRoutes);
