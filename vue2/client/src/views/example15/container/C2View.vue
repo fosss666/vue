@@ -5,12 +5,15 @@
 </template>
 <script>
 // import {mapMutations} from "vuex";
-import {mapActions} from "vuex";
+// import {mapActions} from "vuex";
 
 export default{
   methods:{
     // ...mapMutations(['updateServeName'])
-    ...mapActions(['updateServeName'])
+    // ...mapActions(['updateServeName'])
+    updateServeName(){
+      this.$store.dispatch('updateServeName')
+    }
   }
 }
 </script>
