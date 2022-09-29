@@ -1,6 +1,19 @@
 <template>
-  <div class="p"></div>
+  <div class="p">
+    <el-button @click="updateServeName" >点击从后台获取数据存储到store</el-button>
+  </div>
 </template>
+<script>
+// import {mapMutations} from "vuex";
+import {mapActions} from "vuex";
+
+export default{
+  methods:{
+    // ...mapMutations(['updateServeName'])
+    ...mapActions(['updateServeName'])
+  }
+}
+</script>
 <style scoped>
 .p {
   background-color: wheat;

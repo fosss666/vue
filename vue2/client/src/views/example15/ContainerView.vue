@@ -3,7 +3,8 @@
     <el-container>
       <el-header>
 <!--        {{$store.state.name}},欢迎您！-->
-        {{name}},欢迎您！
+        {{name}},欢迎您
+        {{age}}岁
       </el-header>
       <el-container>
         <el-aside width="200px">
@@ -82,7 +83,8 @@ const options = {
 
   // computed:mapState(['name'])
   computed:{
-    ...mapState(['name'])
+    ...mapState(['name']),
+    ...mapState(['age'])
   }
 }
 export default options;
