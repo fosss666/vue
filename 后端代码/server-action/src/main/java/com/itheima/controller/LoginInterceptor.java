@@ -30,7 +30,7 @@ public class LoginInterceptor implements HandlerInterceptor {
         }
         switch (interceptorMode) {
             case JWT -> {
-                String token = request.getHeader("Authorization");
+                String token = request.getHeader("X-Token");
                 if (token == null) {
                     token = request.getParameter("token");
                     if (token == null) {

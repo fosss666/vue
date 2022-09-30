@@ -29,7 +29,7 @@ public class LoginController {
     }
 
     @PostMapping("/api/user/logout")
-    public R logout(@RequestHeader("Authorization") String token) {
+    public R logout(@RequestHeader("X-Token") String token) {
         userService.logout(token);
         return R.ok("success");
     }
