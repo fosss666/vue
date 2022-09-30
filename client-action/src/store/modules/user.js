@@ -11,9 +11,9 @@ const state = {
 }
 
 const mutations = {
-  SET_TOKEN: (state, token) => {
-    state.token = token
-  },
+  // SET_TOKEN: (state, token) => {
+  //   state.token = token
+  // },
   SET_INTRODUCTION: (state, introduction) => {
     state.introduction = introduction
   },
@@ -35,7 +35,7 @@ const actions = {
     return new Promise((resolve, reject) => {
       login({ username: username.trim(), password: password }).then(response => {
         const { data } = response
-        commit('SET_TOKEN', data.token)
+        // commit('SET_TOKEN', data.token)
         setToken(data.token)
         resolve()
       }).catch(error => {
@@ -47,7 +47,7 @@ const actions = {
   // get user info
   getInfo({ commit, state }) {
     return new Promise((resolve, reject) => {
-      getInfo(state.token).then(response => {
+      getInfo(getToken()).then(response => {
         const { data } = response
 
         if (!data) {
@@ -75,8 +75,8 @@ const actions = {
   // user logout
   logout({ commit, state, dispatch }) {
     return new Promise((resolve, reject) => {
-      logout(state.token).then(() => {
-        commit('SET_TOKEN', '')
+      logout(getToken()).then(() => {
+        // commit('SET_TOKEN', '')
         commit('SET_ROLES', [])
         removeToken()
         resetRouter()
@@ -95,7 +95,7 @@ const actions = {
   // remove token
   resetToken({ commit }) {
     return new Promise(resolve => {
-      commit('SET_TOKEN', '')
+      // commit('SET_TOKEN', '')
       commit('SET_ROLES', [])
       removeToken()
       resolve()
@@ -106,7 +106,7 @@ const actions = {
   async changeRoles({ commit, dispatch }, role) {
     const token = role + '-token'
 
-    commit('SET_TOKEN', token)
+    // commit('SET_TOKEN', token)
     setToken(token)
 
     const { roles } = await dispatch('getInfo')
