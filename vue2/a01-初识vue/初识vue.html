@@ -1,14 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>初识vue</title>
     <script type="text/javascript" src="./js/vue.js"></script>
 </head>
+
 <body>
+    <div id="root">
+        <h1>hello world</h1>
+        <h1>姓名：{{name}}</h1>
+        <h1>年龄{{age}}</h1>
+    </div>
+
     <script tpye="text/javascript">
-        
+
+        const x=new Vue({
+            el:'#root',
+            data:{
+                name:'张三',
+                age:18
+            }
+        })
     </script>
 </body>
+
 </html>
