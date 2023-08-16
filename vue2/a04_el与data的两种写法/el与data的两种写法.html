@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+</head>
+
+<body>
+
+    <div id="root">
+        <h1>你好,{{name}}</h1>
+    </div>
+
+    <script type="text/javascript">
+        //el两种写法
+        /* const x=new Vue({
+            // el: '#root', //第一种
+            data: {
+                name:"佛法佛"
+            }
+        })
+        x.$mount('#root') //第二种 */
+
+        //data两种写法
+        const x=new Vue({
+            el:'#root',
+            //函数式
+            /* data: function(){
+                return{
+                    name:"佛法佛"
+                }
+            } */
+            //简写
+            data(){
+                return{
+                    name:"佛法佛"
+                }
+            }
+        })
+
+
+    </script>
+</body>
+
+</html>
