@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+</head>
+
+<body>
+
+    <div id="root">
+        <h1>a的值是：{{number.a}}</h1><br />
+        <h1>b的值是：{{number.b}}</h1>
+        <button @click="number.a++;">点我a+1</button>
+        <button @click="number.b++;">点我b+1</button>
+    </div>
+
+    <script type="text/javascript">
+        const vm = new Vue({
+            el: '#root',
+            data() {
+                return {
+                    number: {
+                        a: 0,
+                        b: 0
+                    }
+                }
+            },
+            watch: {
+                //监视单一属性
+                /* 'number.a':{
+                    handler(){
+                        console.log("a的值被改变了")
+                    }
+                } */
+                //监视对象内部属性
+                number: {
+                    deep: true,//开启深度监视
+                    handler() {
+                        console.log("number被改变了")
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
