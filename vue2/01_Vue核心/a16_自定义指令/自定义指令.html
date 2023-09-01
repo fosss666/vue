@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>自定义指令</title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+</head>
+
+<body>
+
+    <div id="root">
+        <h2>n的值是：<span v-text="n"></span></h2>
+        <h2>n放大十倍后的值是：<span v-big="n"></span></h2>
+        <button @click="n++">点我n++</button>
+    </div>
+
+    <script type="text/javascript">
+        new Vue({
+            el: '#root',
+            data() {
+                return {
+                    n: 1
+                }
+            },
+            directives: {
+                big(element, binging) {
+                    element.innerText = binging.value * 10
+                }
+            }
+        })
+    </script>
+
+</body>
+
+</html>
