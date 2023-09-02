@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>生命周期</title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+</head>
+
+<body>
+    <div id="root">
+        <!-- <h2 :style="{opacity:opacity}">vue的生命周期</h2> -->
+        <!-- 简写 -->
+        <h2 :style="{opacity}">vue的生命周期</h2>
+    </div>
+    <script>
+        new Vue({
+            el: '#root',
+            data() {
+                return {
+                    opacity: 1
+                }
+            },
+            /* 
+created()：
+在Vue实例被创建之后立即执行。在这个阶段，Vue实例的数据观测和事件配置已完成，但尚未挂载到DOM上。通常在这个阶段执行一些数据初始化、
+事件监听、异步请求等逻辑，但不涉及DOM操作。
+
+mounted()：
+在Vue实例挂载到DOM之后执行。在这个阶段，Vue实例已经完成了数据观测、编译渲染、创建虚拟DOM和真实DOM等所有过程，可以进行DOM操作。
+通常在这个阶段执行一些需要依赖DOM元素的逻辑，如获取元素尺寸、绑定事件、设置定时器等。
+            */
+            mounted() {
+                setInterval(() => {
+                    this.opacity -= 0.01
+                    if (this.opacity <= 0) {
+                        this.opacity = 1
+                    }
+                }, 16);
+            },
+        })
+    </script>
+</body>
+
+</html>
