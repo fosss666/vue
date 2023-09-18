@@ -2,7 +2,7 @@
   <div class="todo-container">
     <div class="todo-wrap">
       <MyHeader :addTodo="addTodo" />
-      <MyList :todos="todos" />
+      <MyList :todos="todos" :changeDone="changeDone" />
       <MyFooter />
     </div>
   </div>
@@ -29,9 +29,16 @@ export default {
     };
   },
   methods: {
+    //添加todo
     addTodo(todo) {
       console.log("调用addTodo方法", todo);
       this.todos.unshift(todo);
+    },
+    //更改todo的勾选状态
+    changeDone(id) {
+      this.todos.forEach((todo) => {
+        if (todo.id === id) todo.done = !todo.done;
+      });
     },
   },
 };
