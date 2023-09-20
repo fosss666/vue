@@ -7,7 +7,7 @@
         :changeDone="changeDone"
         :deleteTodo="deleteTodo"
       />
-      <MyFooter />
+      <MyFooter :todos="todos" />
     </div>
   </div>
 </template>
