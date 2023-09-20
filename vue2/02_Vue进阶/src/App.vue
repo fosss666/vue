@@ -7,7 +7,11 @@
         :changeDone="changeDone"
         :deleteTodo="deleteTodo"
       />
-      <MyFooter :todos="todos" />
+      <MyFooter
+        :todos="todos"
+        :changeTodosChecked="changeTodosChecked"
+        :clearChecked="clearChecked"
+      />
     </div>
   </div>
 </template>
@@ -49,6 +53,20 @@ export default {
       this.todos = this.todos.filter((todo) => {
         return todo.id !== id;
       });
+    },
+    //修改集合是否被勾选
+    changeTodosChecked(done) {
+      this.todos.forEach((todo) => {
+        todo.done = done;
+      });
+    },
+    //清除被勾选的
+    clearChecked() {
+      console.log(this.todos);
+      this.todos = this.todos.filter((todo) => {
+        return !todo.done;
+      });
+      console.log(this.todos);
     },
   },
 };
