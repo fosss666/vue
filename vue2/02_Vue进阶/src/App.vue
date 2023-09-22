@@ -29,11 +29,7 @@ export default {
   },
   data() {
     return {
-      todos: [
-        { id: "001", title: "吃饭", done: true },
-        { id: "002", title: "睡觉", done: false },
-        { id: "003", title: "打豆豆", done: true },
-      ],
+      todos: JSON.parse(localStorage.getItem("todos")) || [], //如果暂时还没有设置todos这个存储，则设置为空数组
     };
   },
   methods: {
@@ -67,6 +63,14 @@ export default {
         return !todo.done;
       });
       console.log(this.todos);
+    },
+  },
+  watch: {
+    todos: {
+      deep: true, //开启深度监视，能监视到对象的子属性的变化
+      handler(value) {
+        localStorage.setItem("todos", JSON.stringify(value));
+      },
     },
   },
 };
