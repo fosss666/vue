@@ -1,123 +1,43 @@
 <template>
-  <div class="todo-container">
-    <div class="todo-wrap">
-      <MyHeader :addTodo="addTodo" />
-      <MyList
-        :todos="todos"
-        :changeDone="changeDone"
-        :deleteTodo="deleteTodo"
-      />
-      <MyFooter
-        :todos="todos"
-        :changeTodosChecked="changeTodosChecked"
-        :clearChecked="clearChecked"
-      />
-    </div>
+  <div>
+    <h1 class="app">{{ msg }}</h1>
+    <!-- 通过向子组件的props传递函数来实现数据传递 -->
+    <School :getSchoolNameProp="getSchoolNameProp" />
+    <!-- 通过自定义事件 v-on/@  实现 -->
+    <!-- <Student @fosss="getStudentNameShijian" /> -->
+    <!-- 通过自定义事件 ref实现 -->
+    <Student ref="student"></Student>
   </div>
 </template>
 
 <script>
-import MyHeader from "./components/MyHeader.vue";
-import MyList from "./components/MyList.vue";
-import MyFooter from "./components/MyFooter.vue";
+import Student from "./components/Student";
+import School from "./components/School";
+
 export default {
   name: "App",
-  components: {
-    MyHeader,
-    MyList,
-    MyFooter,
-  },
+  components: { School, Student },
   data() {
     return {
-      todos: JSON.parse(localStorage.getItem("todos")) || [], //如果暂时还没有设置todos这个存储，则设置为空数组
+      msg: "你好啊",
     };
   },
   methods: {
-    //添加todo
-    addTodo(todo) {
-      console.log("调用addTodo方法", todo);
-      this.todos.unshift(todo);
+    getSchoolNameProp(name) {
+      console.log("学校名字：", name);
     },
-    //更改todo的勾选状态
-    changeDone(id) {
-      this.todos.forEach((todo) => {
-        if (todo.id === id) todo.done = !todo.done;
-      });
-    },
-    //删除todo
-    deleteTodo(id) {
-      this.todos = this.todos.filter((todo) => {
-        return todo.id !== id;
-      });
-    },
-    //修改集合是否被勾选
-    changeTodosChecked(done) {
-      this.todos.forEach((todo) => {
-        todo.done = done;
-      });
-    },
-    //清除被勾选的
-    clearChecked() {
-      console.log(this.todos);
-      this.todos = this.todos.filter((todo) => {
-        return !todo.done;
-      });
-      console.log(this.todos);
+    getStudentNameShijian(name) {
+      console.log("学生名字：", name);
     },
   },
-  watch: {
-    todos: {
-      deep: true, //开启深度监视，能监视到对象的子属性的变化
-      handler(value) {
-        localStorage.setItem("todos", JSON.stringify(value));
-      },
-    },
+  mounted() {
+    this.$refs.student.$on('fosss',this.getStudentNameShijian)
   },
 };
 </script>
 
-<style>
-/*base*/
-body {
-  background: #fff;
-}
-
-.btn {
-  display: inline-block;
-  padding: 4px 12px;
-  margin-bottom: 0;
-  font-size: 14px;
-  line-height: 20px;
-  text-align: center;
-  vertical-align: middle;
-  cursor: pointer;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2),
-    0 1px 2px rgba(0, 0, 0, 0.05);
-  border-radius: 4px;
-}
-
-.btn-danger {
-  color: #fff;
-  background-color: #da4f49;
-  border: 1px solid #bd362f;
-}
-
-.btn-danger:hover {
-  color: #fff;
-  background-color: #bd362f;
-}
-
-.btn:focus {
-  outline: none;
-}
-
-.todo-container {
-  width: 600px;
-  margin: 0 auto;
-}
-.todo-container .todo-wrap {
-  padding: 10px;
-  border: 1px solid #ddd;
-  border-radius: 5px;
+<style scoped>
+.app {
+  background-color: rgba(7, 223, 90, 0.844);
 }
 </style>
