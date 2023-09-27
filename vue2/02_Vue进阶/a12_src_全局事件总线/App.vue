@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <h1 class="app">{{ msg }}</h1>
+  <div class="app">
+    <h1>{{ msg }}</h1>
     <School />
     <Student />
   </div>
@@ -15,15 +15,15 @@ export default {
   components: { School, Student },
   data() {
     return {
-      msg: "你好啊",
+      msg: "你好啊！",
     };
   },
-  methods: {},
 };
 </script>
 
-<style>
+<style scoped>
 .app {
-  background-color: rgba(7, 223, 90, 0.844);
+  background-color: gray;
+  padding: 5px;
 }
 </style>
